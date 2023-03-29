@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.10.15/themes/ui-cupertino/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.10.15/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <script type="text/javascript" src="/js/jquery-easyui-1.10.15/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-easyui-1.10.15/jquery.easyui.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form {
+            width: 400px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="easyui-panel" title="Login" style="width:350px;padding:30px 60px;">
+                <form id="login-form" method="post">
+                    <div style="margin-bottom:20px">
+                        <input class="easyui-textbox" type="text" name="login" label="login:" style="width:100%;"
+                            required>
+                    </div>
+                    <div style="margin-bottom:20px">
+                        <input class="easyui-passwordbox" type="password" name="password" label="Password:"
+                            style="width:100%;" required>
+                    </div>
+                    <div style="text-align:center;padding:5px 0;">
+                        <button type="button" class="easyui-linkbutton" style="width:80px"
+                            onclick="doLogin()">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function doLogin() {
+            const form = document.querySelector('#login-form');
+            //const messageDiv = document.createElement('div');
+            //e.preventDefault();
+            const formData = new FormData(form);
+
+            fetch('http://localhost:8084/api/v1/public/login', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(result => {           
+                    console.log(result)                             
+                    if (result.code == "SUCCESS") {
+                        
+                        localStorage.setItem("token",result.token)
+                        localStorage.setItem("users",JSON.stringify(result.rows))
+                        localStorage.setItem("user",JSON.stringify(result.user))                        
+                        location.href = '/?token='+result.token; // ganti dengan URL yang benar
+                    } else {
+                        $.messager.alert('Error', result.message, 'error');
+                    }
+                })
+                .catch(error => console.error(error));
+
+        }
+    </script>
+</body>
+
+</html>

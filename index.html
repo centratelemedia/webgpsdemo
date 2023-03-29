@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.10.15/themes/ui-cupertino/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.10.15/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.10.15/themes/color.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/gps.css?v=1.0">
+    
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="/js/jquery-easyui-1.10.15/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-easyui-1.10.15/jquery.easyui.min.js"></script>    
+    <script type="text/javascript" src="/js/pm.js?v=1.1"></script>    
+    
+</head>
+
+<body>
+    <div id="page_map">
+
+    </div>
+    <div id="page_report">
+
+    </div>
+    <script>
+        $pm.ready(function(){
+            console.log("$pm.ready()")
+            window.map=new Map();
+            map.init();
+        })
+        $pm.loadJS("js/map.js?v=1.6")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<div id="layout_map" class="easyui-layout" data-options="fit:true">
+    <div data-options="region:'north',height:50">
+        <a href="#page_report">Goto Report</a>
+    </div>
+    <div data-options="region:'west',width:350">
+        <!-- Accordio component -->
+        <div id="aa" class="easyui-accordion" style="width:300px;height:200px;">
+            <div title="Title1" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;">
+                <h3 style="color:#0099FF;">Accordion for jQuery</h3>
+                <p>Accordion is a part of easyui framework for jQuery.
+                    It lets you define your accordion component on web page more easily.</p>
+            </div>
+            <div title="Title2" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">
+                content2
+            </div>
+            <div title="Title3">
+                content3
+            </div>
+        </div>
+    </div>
+    <div id="map_canvas" data-options="region:'center'">
+
+    </div>
+    <div data-options="region:'east',title:'Dashboard',width:300" style="text-align: center;">
+
+    </div>
+    <div data-options="region:'south',split:true,border:false,height:250">
+        <table class="easyui-datagrid" data-options="fit:true,title:'Data Alarm'">
+            <thead>
+                <tr>
+                    <th data-options="field:'code'">Code</th>
+                    <th data-options="field:'name'">Name</th>
+                    <th data-options="field:'price'">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>name1</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
